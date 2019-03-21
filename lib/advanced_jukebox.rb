@@ -36,7 +36,7 @@ def play songs
       puts "Playing #{song}"
       match = true
 
-        system 'itunes.exe c:\low.mp3'
+        system 'start #{file_loc}'
 
 
       break
