@@ -12,18 +12,14 @@
 # "Graduation Failed" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/07.mp3'
 # }
 
+
 def help
-  help = <<-HELP
-I accept the following commands:
-- help : displays this help message
-- list : displays a list of songs you can play
-- play : lets you choose a song to play
-- exit : exits this program
-HELP
-
-  puts help
+  puts "I accept the following commands:
+  - help : displays this help message
+  - list : displays a list of songs you can play
+  - play : lets you choose a song to play
+  - exit : exits this program"
 end
-
 
 
 def list(my_songs)
@@ -44,30 +40,27 @@ def play(my_songs)
   end
 end
 
+
 def exit_jukebox
   puts "Goodbye"
 end
 
+
 def run(my_songs)
   help
-
   input = ""
-  while input
+  until input == "exit"
     puts "Please enter a command:"
-    input = gets.downcase.strip
-    case input
-    when 'list'
-      list(my_songs)
-    when 'play'
-      list(my_songs)
-      play(my_songs)
-    when 'help'
+    input = gets.chomp
+    if input == "list"
+      list(songs)
+    elsif input == "help"
       help
-    when 'exit'
+    elsif input == "play"
+      list(songs)
+      play(songs)
+    elsif input == "exit"
       exit_jukebox
-      break
-    else
-      help
     end
   end
 end
